@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "EJ2 Grid Demo";
+}
+
+<div class="row">
+    <div class="col stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-2">
+                    <h6 class="card-title mb-0">EJ2 Grid Demo List</h6>
+                </div>
+                
+                <table id="tblList" class="table table-hover mb-0"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    
+<!--Detail Template-->
+    <script id="detailtemplate">
+        <table class="detailtable" width="100%" >
+            <colgroup>
+                <col width="33%">
+                <col width="33%">
+                <col width="34%">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        <span style="font-weight: 500;">Payment Id: </span> ${Id}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Customer Id: </span> ${CustomerId}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Transaction Type: </span> ${TransactionType}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Transaction Status: </span> ${TransactionStatus}
+                    </td>
+                </tr>
+                <tr>                 
+                    <td>
+                        <span style="font-weight: 500;">Transaction Id: </span> ${TransactionId}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">currency: </span> ${Currency}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Amount: </span> ${Amount}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Conversion Rate: </span> ${ConversionRate}
+                    </td>                
+                </tr>
+                <tr>
+                    <td>
+                        <span style="font-weight: 500;">Processed Currency: </span> ${ProcessedCurrency}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Processed Amount: </span> ${ProcessedAmount}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Fee: </span> ${fee}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Fee Included: </span> ${FeeIncluded}
+                    </td>     
+                </tr>
+                <tr>
+                    <td>
+                        <span style="font-weight: 500;">Fee Type: </span> ${FeeType}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Payment Method: </span> ${PaymentMethod}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Payment Processor: </span> ${PaymentProcessor}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Gateway: </span> ${Gateway}
+                    </td> 
+                </tr>
+                <tr>            
+                    <td>
+                        <span style="font-weight: 500;">Status Code: </span> ${StatusCode}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">Status Details: </span> ${StatusDetails}
+                    </td>
+                    <td>
+                        <span style="font-weight: 500;">CreatedAt: </span> ${CreatedAt}
+                    </td> 
+                </tr>
+            </tbody>
+        </table>
+    </script> 
+    <!--Detail Template-->
+
+    <script id="statusTemplate">
+        <div>
+            ${if(TransactionStatus == "SUCCESSFUL")} <span class="bg-status bg-success">${TransactionStatus}</span>${/if}
+            ${if(TransactionStatus == "rejected")} <span class="bg-status bg-danger">${TransactionStatus}</span>${/if}
+            ${if(TransactionStatus == "initialized")} <span class="bg-status bg-secondary">${TransactionStatus}</span>${/if}
+        </div>
+    </script>
+
+    <partial name="_IncludeSyncfusion"></partial>
+    <script src="~/js/ej2-grid-demo.js" asp-append-version="true"></script>
+}
